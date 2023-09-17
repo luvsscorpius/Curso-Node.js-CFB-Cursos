@@ -1,0 +1,1 @@
+const entryPoint = 'This is the entryPoint'
