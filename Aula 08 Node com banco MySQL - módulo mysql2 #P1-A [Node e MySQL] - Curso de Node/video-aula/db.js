@@ -29,5 +29,15 @@ const todosClientes = async () => {
     return await linhas
 }
 
+// Função insert
+const insereCliente = async (cliente) => {
+    const conexao = await conectar()
+
+    // Executa uma query sql inserir clientes no banco de dados
+    const sql = 'INSERT INTO cliente_node (id, nome, idade) VALUES (?, ?, ?)'
+    const valores = [cliente.id, cliente.nome, cliente.idade]
+    await conexao.query(sql, valores)
+}
+
 // Exportando a função todos os clientes para que ela possa ser executada em outros módulos
-module.exports = { todosClientes }
+module.exports = { todosClientes, insereCliente }
