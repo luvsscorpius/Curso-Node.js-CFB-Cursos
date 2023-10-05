@@ -39,5 +39,25 @@ const insereCliente = async (cliente) => {
     await conexao.query(sql, valores)
 }
 
+// Função update
+const atualizaCliente = async (id, cliente) => {
+    const conexao = await conectar()
+
+    // Executa uma query sql para atualizar o cliente no banco de dados
+    const sql = 'UPDATE cliente_node SET nome=?, idade=? WHERE id=? '
+    const valores = [cliente.nome, cliente.idade, id]
+    await conexao.query(sql, valores)
+}
+
+// Função delete
+const deletaCliente = async (id) => {
+    const conexao = await conectar()
+
+    // Executa uma query sql para deletar o cliente no banco de dados
+    const sql = 'DELETE FROM cliente_node WHERE id=?'
+    const valores = [id]
+    await conexao.query(sql, valores)
+}
+
 // Exportando a função todos os clientes para que ela possa ser executada em outros módulos
-module.exports = { todosClientes, insereCliente }
+module.exports = { todosClientes, insereCliente, atualizaCliente, deletaCliente }

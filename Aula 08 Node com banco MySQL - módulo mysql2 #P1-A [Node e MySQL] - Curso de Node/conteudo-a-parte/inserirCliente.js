@@ -1,5 +1,5 @@
-// Importe a conexão com o banco de dados
-const connection = require('./db')
+    // Importe a conexão com o banco de dados
+    const connection = require('./db')
 
 // Crie uma função onde receba de parametros as informações não nulas do DB
 const InserirCliente = async (id, nome, idade) => {
