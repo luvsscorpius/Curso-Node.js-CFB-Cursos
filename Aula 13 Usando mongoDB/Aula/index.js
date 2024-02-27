@@ -19,12 +19,18 @@ const Mongo = async () => {
 
     //Aula 15 Query
     // const query = {curso: /.t/} // Somente os cursos que terminam com a letra t
-    const query = {} // Somente os cursos que comecam com a letra c
+    // const query = {} // Somente os cursos que comecam com a letra c
 
-    // Utilizando o find
-    // Ele pega tudo da coleção
-    // O projection serve para a inclusao ou exclusao em uma consulta para inclusao utilize o valor: 1 e para exlusão a 0.    
-    const documents = await db.collection('cursos').find(query, {projection : {_id: 0}}).toArray();
+    // // Utilizando o find
+    // // Ele pega tudo da coleção
+    // // O projection serve para a inclusao ou exclusao em uma consulta para inclusao utilize o valor: 1 e para exlusão a 0.    
+    // const documents = await db.collection('cursos').find(query, {projection : {_id: 0}}).toArray();
+    // console.log(documents);
+
+    // Aula 16 - Sort
+    const ordenacao = {curso:1} // Se a ordenação for por ordem crescente eu indico 1, se ela for por ordem decrescente eu indico -1.
+    const query = {}
+    const documents = await db.collection('cursos').find(query).sort(ordenacao).toArray();
     console.log(documents);
 
     // Fechar a conexão
