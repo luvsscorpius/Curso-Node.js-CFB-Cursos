@@ -30,7 +30,7 @@ const Mongo = async () => {
     // Aula 16 - Sort
     const ordenacao = {curso:1} // Se a ordenação for por ordem crescente eu indico 1, se ela for por ordem decrescente eu indico -1.
     const query = {}
-    const documents = await db.collection('cursos').find(query).sort(ordenacao).toArray();
+    const documents = await db.collection('cursos').find(query).sort(ordenacao).toArray(); // coloque o .sort depois de query para sortear
     console.log(documents);
 
     // Fechar a conexão
