@@ -28,15 +28,20 @@ const Mongo = async () => {
     // console.log(documents);
 
     // Aula 17 - Deletar objetos da coleção
-    let query = {curso: 'Curso de React'}
-    const documentss = await db.collection('cursos').deleteMany(query)
-    console.log('Um curso deletado')
+    // let query = {curso: 'Curso de React'}
+    // const documentss = await db.collection('cursos').deleteMany(query)
+    // console.log('Um curso deletado')
 
-    // Aula 16 - Sort
-    const ordenacao = {curso:1} // Se a ordenação for por ordem crescente eu indico 1, se ela for por ordem decrescente eu indico -1.
-    query = {}
-    const documents = await db.collection('cursos').find(query).sort(ordenacao).toArray(); // coloque o .sort depois de query para sortear
-    console.log(documents);
+    // // Aula 16 - Sort
+    // const ordenacao = {curso:1} // Se a ordenação for por ordem crescente eu indico 1, se ela for por ordem decrescente eu indico -1.
+    // query = {}
+    // const documents = await db.collection('cursos').find(query).sort(ordenacao).toArray(); // coloque o .sort depois de query para sortear
+    // console.log(documents);
+
+    // Aula 18 - Contando registros inseridos
+    const query = [{curso: 'Curso de HTML', canal: 'CFB Cursos'}, {curso: 'Curso de CSS', canal: 'CFB Cursos'}]
+    const documents = await db.collection('cursos').insertMany(query)
+    console.log(documents.insertedCount + ' novo(s) cursos(s) inseridos(s)')
 
     // Fechar a conexão
     client.close()
