@@ -39,9 +39,25 @@ const Mongo = async () => {
     // console.log(documents);
 
     // Aula 18 - Contando registros inseridos
-    const query = [{curso: 'Curso de HTML', canal: 'CFB Cursos'}, {curso: 'Curso de CSS', canal: 'CFB Cursos'}]
-    const documents = await db.collection('cursos').insertMany(query)
-    console.log(documents.insertedCount + ' novo(s) cursos(s) inseridos(s)')
+    // const query = [{curso: 'Curso de HTML', canal: 'CFB Cursos'}, {curso: 'Curso de CSS', canal: 'CFB Cursos'}]
+    // const documents = await db.collection('cursos').insertMany(query)
+    // console.log(documents.insertedCount + ' novo(s) cursos(s) inseridos(s)')
+
+    // Aula 19 - Atualizando objetos 
+    // UpdateOne
+    // const query = {curso: 'Curso de HTML'}
+    // const novoObj = {$set: {curso: 'Curso de HTML 2021'}}
+    // const documents = await db.collection('cursos').updateOne(query, novoObj)
+    // console.log('1 novo cursos atualizados')
+
+    // UpdateMany
+    const query = {curso: 'Curso de NodeJS'}
+    const novoObj = {$set: {curso: 'Curso de NodeJS 2024'}}
+    const documents = await db.collection('cursos').updateMany(query, novoObj)
+    console.log(documents.modifiedCount + ' novos cursos atualizados')
+
+    const documentss = await db.collection('cursos').find({}).toArray();
+    console.log(documentss);
 
     // Fechar a conexão
     client.close()
